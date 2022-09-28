@@ -19,6 +19,21 @@
 #include <stdlib.h>
 #include <string.h>
 
+void numberToArray(int number, int numberArr[])
+{
+    int lastDigit;
+    int counter = 0;
+
+    do
+    {
+        /* Store card number digits into array */
+        lastDigit = number % 10;
+        numberArr[counter] = lastDigit;
+        number /= 10;
+        counter++;
+    } while (number > 0);
+}
+
 int main(void)
 {
     unsigned long cardNumber = 0;
@@ -37,17 +52,8 @@ int main(void)
      * STEP 1
      * */
     int cardNumberArr[17];
-    int lastDigit;
-    int counter = 0;
 
-    do
-    {
-        /* Store card number digits into array */
-        lastDigit = cardNumber % 10;
-        cardNumberArr[counter] = lastDigit;
-        cardNumber /= 10;
-        counter++;
-    } while (cardNumber > 0);
+    numberToArray(cardNumber, cardNumberArr);
 
     return 0;
 }
