@@ -1,6 +1,12 @@
 /**
  * Credit card number validation program for Problem Set 1
  *
+ * This program uses Luhn's Algorithm to determine the syntactical validity of a credit card number.
+ * The following steps are implemented:
+ * 1. Multiply every other digit by 2, starting with the number's second-to-last digit. Add those products' digits together.
+ * 2. Add the sum to the sum of the digits that weren't multipliedby 2.
+ * 3. If the total modulo 10 is congruent to 0, the number is valid!
+ *
  * Written by Chance Johnson 2022-09-28
  * */
 
@@ -61,29 +67,6 @@ int main(void)
         t++;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     /**
      * I SHOULD PUT THE VALIDATION CHECK HERE??
      * */
@@ -106,12 +89,6 @@ int main(void)
         c++;
     }
 
-    // for (int b = 0; b < c + 1; b++)
-    // {
-    //     printf("%i\n", luhArr[b]);
-    // }
-
-
     // Now we need to iterate through the array, separate each number, and then add it to a running total
 
     int luhTot = 0;
@@ -126,8 +103,6 @@ int main(void)
 
         // So I need to get the last digit of the number
 
-
-
         while (luhArr[b] > 0)
         {
             // Get last digit of entered number
@@ -140,43 +115,7 @@ int main(void)
             // Divide number by 10 to get next to last digit
             cc = cc / 10;
         }
-
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     /**
      * Check card vendor (ASSUMES VALID CARD NUMBER)
