@@ -15,8 +15,8 @@
  *
  *  3. If total modulo 10 is congruent with 0, the number is valid!
  *
- *  If the card is valid, it then determines the card issuer by checking the first few 
- *  digits of the number. This part of the program only supports Visa, American Express, 
+ *  If the card is valid, it then determines the card issuer by checking the first few
+ *  digits of the number. This part of the program only supports Visa, American Express,
  *  and some MasterCard numbers.
  * */
 
