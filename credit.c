@@ -20,7 +20,7 @@
 #include <string.h>
 
 /* Given a number and array, put each digit in the number into the array (backwards) */
-void numberToArray(int number, int array[])
+void numberToArray(unsigned long number, int array[])
 {
     int lastDigit;
     int counter = 0;
@@ -66,10 +66,11 @@ int main(void)
     /**
      * STEP 1
      * */
-    int cardNumberArray[17];
+    int cardNumberLength = calculateNumberOfDigits(cardNumber);
+    int cardNumberArray[cardNumberLength];
 
+    /* Turn the entered card number into an array */
     numberToArray(cardNumber, cardNumberArray);
-
 
     return 0;
 }
