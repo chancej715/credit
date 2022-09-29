@@ -22,7 +22,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 /* Given a number and array, put each digit in the number into the array (backwards) */
 void numberToArray(unsigned long number, int array[])
