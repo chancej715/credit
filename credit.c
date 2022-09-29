@@ -63,7 +63,8 @@ int main(void)
         scanf("%lu", &cardNumber);
 
         /* Clear buffer to prevent endless loops upon entering certain characters, like letters */
-        while ((getchar()) != '\n');
+        while ((getchar()) != '\n')
+            ;
     }
 
     int cardNumberLength = calculateNumberOfDigits(cardNumber);
@@ -105,7 +106,23 @@ int main(void)
 
     if (everyOtherTimesTwoTotal % 10 == 0)
     {
-        printf("VALID\n");
+        /* Card number is syntactically correct according to Luhn's Algorithm */
+        numberToArray(cardNumber, cardNumberArray);
+
+        if (cardNumberArray[cardNumberLength - 1] == 4)
+        {
+            printf("VISA\n");
+        }
+        else if (cardNumberArray[cardNumberLength - 1] == 3)
+        {
+            if (cardNumberArray[cardNumberLength - 2] == 4 || cardNumberArray[cardNumberLength - 2] == 7)
+                printf("AMEX\n");
+        }
+        else if (cardNumberArray[cardNumberLength - 1] == 5)
+        {
+            if (cardNumberArray[cardNumberLength - 2] + 5 < 11)
+                printf("MASTERCARD\n");
+        }
     }
     else
     {
