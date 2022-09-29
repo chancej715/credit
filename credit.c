@@ -7,12 +7,15 @@
  * card number.
  *
  * The following steps are taken on the given card number:
+ *
  *  1. Multiply every other digit by 2, starting with the number's second-to-last digit.
  *  Add those products' digits together.
  *
  *  2. Add the sum to the sum of the digits that weren't multiplied by 2.
  *
  *  3. If total modulo 10 is congruent with 0, the number is valid!
+ *
+ *  If the card is valid, it then determines the card issuer by checking the first few digits of the number.
  * */
 
 #include <stdio.h>
@@ -40,7 +43,7 @@ unsigned long calculateNumberOfDigits(unsigned long number)
 {
     int numberOfDigits = 0;
 
-    while(number > 0)
+    while (number > 0)
     {
         numberOfDigits++;
         number /= 10;
@@ -63,14 +66,51 @@ int main(void)
         while ((getchar()) != '\n');
     }
 
-    /**
-     * STEP 1
-     * */
     int cardNumberLength = calculateNumberOfDigits(cardNumber);
     int cardNumberArray[cardNumberLength];
 
     /* Turn the entered card number into an array */
     numberToArray(cardNumber, cardNumberArray);
+
+    /* Multiply every other digit by 2, starting from the second to last digit */
+    int everyOtherTimesTwoTotal = 0;
+
+    for (int i = 1; i < cardNumberLength; i += 2)
+    {
+        if (cardNumberArray[i])
+        {
+            if (cardNumberArray[i] * 2 < 10)
+            {
+                /* 1 through 9, inclusive */
+                everyOtherTimesTwoTotal += cardNumberArray[i] * 2;
+            }
+            else
+            {
+                /* 10 through 18, inclusive */
+                int tempArray[3];
+                numberToArray(cardNumberArray[i] * 2, tempArray);
+
+                /* Each digit added to running total separately */
+                for (int j = 0; j < 2; j++)
+                    everyOtherTimesTwoTotal += tempArray[j];
+            }
+
+            cardNumberArray[i] = 0;
+        }
+    }
+
+    /* Add that sum to the sum of the digits that weren't multiplied by 2 */
+    for (int i = 0; i < cardNumberLength; i++)
+        everyOtherTimesTwoTotal += cardNumberArray[i];
+
+    if (everyOtherTimesTwoTotal % 10 == 0)
+    {
+        printf("VALID\n");
+    }
+    else
+    {
+        printf("INVALID\n");
+    }
 
     return 0;
 }
