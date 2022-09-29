@@ -19,7 +19,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-void numberToArray(int number, int numberArr[])
+/* Given a number and array, put each digit in the number into the array (backwards) */
+void numberToArray(int number, int array[])
 {
     int lastDigit;
     int counter = 0;
@@ -28,10 +29,24 @@ void numberToArray(int number, int numberArr[])
     {
         /* Store card number digits into array */
         lastDigit = number % 10;
-        numberArr[counter] = lastDigit;
+        array[counter] = lastDigit;
         number /= 10;
         counter++;
     } while (number > 0);
+}
+
+/* Given a number, return number of digits in that number */
+unsigned long calculateNumberOfDigits(unsigned long number)
+{
+    int numberOfDigits = 0;
+
+    while(number > 0)
+    {
+        numberOfDigits++;
+        number /= 10;
+    }
+
+    return numberOfDigits;
 }
 
 int main(void)
@@ -51,9 +66,10 @@ int main(void)
     /**
      * STEP 1
      * */
-    int cardNumberArr[17];
+    int cardNumberArray[17];
 
-    numberToArray(cardNumber, cardNumberArr);
+    numberToArray(cardNumber, cardNumberArray);
+
 
     return 0;
 }
