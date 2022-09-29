@@ -100,6 +100,13 @@ int main(void)
         }
     }
 
+    /* Determine if length of card is at least 13 characters */
+    if (cardNumberLength < 13)
+    {
+        printf("INVALID\n");
+        return 0;
+    }
+
     /* Add that sum to the sum of the digits that weren't multiplied by 2 */
     for (int i = 0; i < cardNumberLength; i++)
         everyOtherTimesTwoTotal += cardNumberArray[i];
@@ -116,12 +123,24 @@ int main(void)
         else if (cardNumberArray[cardNumberLength - 1] == 3)
         {
             if (cardNumberArray[cardNumberLength - 2] == 4 || cardNumberArray[cardNumberLength - 2] == 7)
+            {
                 printf("AMEX\n");
+            }
+            else
+            {
+                printf("INVALID\n");
+            }
         }
         else if (cardNumberArray[cardNumberLength - 1] == 5)
         {
             if (cardNumberArray[cardNumberLength - 2] + 5 < 11)
+            {
                 printf("MASTERCARD\n");
+            }
+            else
+            {
+                printf("INVALID\n");
+            }
         }
     }
     else
