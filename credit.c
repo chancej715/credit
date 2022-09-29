@@ -9,13 +9,15 @@
  * The following steps are taken on the given card number:
  *
  *  1. Multiply every other digit by 2, starting with the number's second-to-last digit.
- *  Add those products' digits together.
+ *      - Add those products' digits together.
  *
  *  2. Add the sum to the sum of the digits that weren't multiplied by 2.
  *
  *  3. If total modulo 10 is congruent with 0, the number is valid!
  *
- *  If the card is valid, it then determines the card issuer by checking the first few digits of the number.
+ *  If the card is valid, it then determines the card issuer by checking the first few 
+ *  digits of the number. This part of the program only supports Visa, American Express, 
+ *  and some MasterCard numbers.
  * */
 
 #include <stdio.h>
@@ -63,8 +65,7 @@ int main(void)
         scanf("%lu", &cardNumber);
 
         /* Clear buffer to prevent endless loops upon entering certain characters, like letters */
-        while ((getchar()) != '\n')
-            ;
+        while ((getchar()) != '\n');
     }
 
     int cardNumberLength = calculateNumberOfDigits(cardNumber);
