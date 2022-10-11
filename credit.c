@@ -50,14 +50,11 @@ int main(void)
         if (cardNumberArray[i])
         {
             if (cardNumberArray[i] * 2 < 10)
-            {
-                // 1 through 9, inclusive
-                everyOtherTimesTwoTotal += cardNumberArray[i] * 2;
-            }
+                everyOtherTimesTwoTotal += cardNumberArray[i] * 2; // 1 through 9, inclusive
             else
             {
                 // 10 through 18, inclusive
-                int tempArray[3];
+                int tempArray[2];
                 numberToArray(cardNumberArray[i] * 2, tempArray);
 
                 // Each digit added to running total separately
