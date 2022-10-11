@@ -1,11 +1,8 @@
 /**
- * Credit card number validation program.
- *
  * Author: Chance Johnson
  * Date: 2022-09-28
- *
- * This program uses Luhn's Algorithm to determine the syntactical validity of a
- * credit card number.
+ * Description: Credit card number validation program which uses Luhn's Algorithm to determine
+ * the syntactical validity of a credit card number.
  *
  * Luhn's Algorithm:
  *  1. Multiply every other digit of the card number by 2, starting with the number's
@@ -17,7 +14,7 @@
  *  digits of the number. This part of the program only supports Visa, American Express,
  *  and some MasterCard numbers.
  * 
- *  Caveats: Designed to work only with American Express, Visa, and most MasterCard numbers.
+ *  Designed to work only with American Express, Visa, and most MasterCard numbers.
  * */
 
 #include <stdio.h>
