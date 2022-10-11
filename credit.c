@@ -19,35 +19,8 @@
 
 #include <stdio.h>
 
-// Given a number and array, put each digit in the number into the array (backwards)
-void numberToArray(unsigned long number, int array[])
-{
-    int lastDigit;
-    int counter = 0;
-
-    do
-    {
-        // Store card number digits into array
-        lastDigit = number % 10;
-        array[counter] = lastDigit;
-        number /= 10;
-        counter++;
-    } while (number > 0);
-}
-
-// Given a number, return number of digits in that number
-unsigned long calculateNumberOfDigits(unsigned long number)
-{
-    int numberOfDigits = 0;
-
-    while (number > 0)
-    {
-        numberOfDigits++;
-        number /= 10;
-    }
-
-    return numberOfDigits;
-}
+void numberToArray(unsigned long number, int array[]);
+unsigned long calculateNumberOfDigits(unsigned long number);
 
 int main(void)
 {
@@ -129,4 +102,34 @@ int main(void)
         printf("INVALID\n");
 
     return 0;
+}
+
+// Given a number and array, put each digit in the number into the array (backwards)
+void numberToArray(unsigned long number, int array[])
+{
+    int lastDigit;
+    int counter = 0;
+
+    do
+    {
+        // Store card number digits into array
+        lastDigit = number % 10;
+        array[counter] = lastDigit;
+        number /= 10;
+        counter++;
+    } while (number > 0);
+}
+
+// Given a number, return number of digits in that number
+unsigned long calculateNumberOfDigits(unsigned long number)
+{
+    int numberOfDigits = 0;
+
+    while (number > 0)
+    {
+        numberOfDigits++;
+        number /= 10;
+    }
+
+    return numberOfDigits;
 }
